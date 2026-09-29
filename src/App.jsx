@@ -1,25 +1,51 @@
-import React from "react";
+// import React from "react";
 import "./App.scss";
 
 const Header = () => {
-  return React.createElement(
-    "header",
-    null,
-    React.createElement("h1", null, "hello"),
+  return (
+    <header>
+      <h1>hello</h1>
+    </header>
   );
 };
 
 const App = () => {
-  return React.createElement(
-    React.Fragment,
-    null,
-    React.createElement(Header),
+  const listName = [
+    {
+      id: 0,
+      name: "ali",
+    },
 
-    React.createElement(
-      "div",
-      null,
-      React.createElement("h1", null, "hello would"),
-    ),
+    {
+      id: 1,
+      name: "hossein",
+    },
+
+    {
+      id: 2,
+      name: "amir",
+    },
+  ];
+
+  const bool = 0 < 1;
+
+  return (
+    <>
+      <Header />
+      <div className="bg-dark">
+        <h1>hello would</h1>
+      </div>
+
+      <ul>
+        {listName.map((name) => (
+          <li key={name.id}>{name.name}</li>
+        ))}
+      </ul>
+
+      {bool ? <p>true</p> : <p>false</p>}
+
+      {!bool}
+    </>
   );
 };
 

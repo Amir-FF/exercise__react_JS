@@ -2,6 +2,8 @@
 import Header from "./components/Header";
 import "./scss/styles.scss";
 
+import Button from "react-bootstrap/Button";
+
 const App = () => {
   // codes
   const listName = [
@@ -41,6 +43,10 @@ const App = () => {
       </ul>
 
       {bool ? <p>true</p> : <p>false</p>}
+
+      <Button variant="primary">Primary</Button>
+      <Button variant="secondary">Secondary</Button>
+      <Button variant="success">Success</Button>
     </>
   );
 };

@@ -1,15 +1,9 @@
 // import React from "react";
-import "./App.scss";
-
-const Header = () => {
-  return (
-    <header>
-      <h1>hello</h1>
-    </header>
-  );
-};
+import Header from "./components/Header";
+import "./scss/styles.scss";
 
 const App = () => {
+  // codes
   const listName = [
     {
       id: 0,
@@ -27,13 +21,17 @@ const App = () => {
     },
   ];
 
+  const inlineStyle = {
+    fontSize: "2rem",
+  };
+
   const bool = 0 < 1;
 
   return (
     <>
       <Header />
       <div className="bg-dark">
-        <h1>hello would</h1>
+        <h1 style={inlineStyle}>hello would</h1>
       </div>
 
       <ul>
@@ -43,8 +41,6 @@ const App = () => {
       </ul>
 
       {bool ? <p>true</p> : <p>false</p>}
-
-      {!bool}
     </>
   );
 };

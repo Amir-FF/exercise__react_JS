@@ -1,7 +1,6 @@
 // import React from "react";
 import Header from "./components/Header";
 import "./scss/styles.scss";
-
 import Button from "react-bootstrap/Button";
 
 const App = () => {
@@ -29,6 +28,10 @@ const App = () => {
 
   const bool = 0 < 1;
 
+  const sayName = (name, event) => {
+    console.log(name, event.target);
+  };
+
   return (
     <>
       <Header />
@@ -44,9 +47,9 @@ const App = () => {
 
       {bool ? <p>true</p> : <p>false</p>}
 
-      <Button variant="primary">Primary</Button>
-      <Button variant="secondary">Secondary</Button>
-      <Button variant="success">Success</Button>
+      <Button onClick={() => sayName("name", event)} variant="success">
+        Success
+      </Button>
     </>
   );
 };

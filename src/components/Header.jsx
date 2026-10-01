@@ -1,9 +1,14 @@
 import "./header.scss";
 
-const Header = () => {
+const Header = (props) => {
+  props.sayName("ali", event);
+
   return (
     <header>
       <h2>hello</h2>
+      <p>name = {props.user.name}</p>
+      <p>age = {props.user.age}</p>
+      <p>{props.children}</p>
     </header>
   );
 };

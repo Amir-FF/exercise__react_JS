@@ -32,9 +32,17 @@ const App = () => {
     console.log(name, event.target);
   };
 
+  const user = {
+    name: "Amir",
+    age: "22",
+  };
+
   return (
     <>
-      <Header />
+      <Header user={user} sayName={sayName}>
+        <span>prop in the span</span>
+      </Header>
+
       <div className="bg-dark">
         <h1 style={inlineStyle}>hello would</h1>
       </div>

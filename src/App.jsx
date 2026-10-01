@@ -1,5 +1,6 @@
 // import React from "react";
-import Header from "./components/Header";
+import Form from "./components/form/Form";
+import Header from "./components/header/Header";
 import "./scss/styles.scss";
 import Button from "react-bootstrap/Button";
 
@@ -58,6 +59,10 @@ const App = () => {
       <Button onClick={() => sayName("name", event)} variant="success">
         Success
       </Button>
+
+      <hr />
+
+      <Form />
     </>
   );
 };

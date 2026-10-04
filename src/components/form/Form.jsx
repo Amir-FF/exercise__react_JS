@@ -54,7 +54,7 @@ const form = () => {
         aria-label="Small select example"
         onChange={itemChange}
       >
-        <option selected>Open this select menu</option>
+        <option value="0">Open this select menu</option>
         <option value="1">One</option>
         <option value="2">Two</option>
         <option value="3">Three</option>
@@ -68,7 +68,7 @@ const form = () => {
         aria-label="Multiple select example"
         onChange={itemChangeMultiple}
       >
-        <option selected>Open this select menu</option>
+        <option value="0">Open this select menu</option>
         <option value="1">One</option>
         <option value="2">Two</option>
         <option value="3">Three</option>
@@ -84,7 +84,7 @@ const form = () => {
           id="checkDefault"
           onChange={handleChange}
         />
-        <label className="form-check-label" for="checkDefault">
+        <label className="form-check-label" htmlFor="checkDefault">
           red
         </label>
       </div>
@@ -96,7 +96,7 @@ const form = () => {
           id="checkChecked"
           onChange={handleChange}
         />
-        <label className="form-check-label" for="checkChecked">
+        <label className="form-check-label" htmlFor="checkChecked">
           green
         </label>
 
@@ -112,7 +112,7 @@ const form = () => {
             value="famale"
             onChange={handleChange2}
           />
-          <label className="form-check-label" for="radioDefault1">
+          <label className="form-check-label" htmlFor="radioDefault1">
             famale
           </label>
         </div>
@@ -125,7 +125,7 @@ const form = () => {
             value="male"
             onChange={handleChange2}
           />
-          <label className="form-check-label" for="radioDefault2">
+          <label className="form-check-label" htmlFor="radioDefault2">
             male
           </label>
         </div>

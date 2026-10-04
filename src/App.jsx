@@ -1,26 +1,64 @@
 // import React from "react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./scss/styles.scss";
 
 const App = () => {
   // codes
   const [count, setCount] = useState(0);
-
-  const handleClick = () => {
-    setCount((prevCount) => prevCount + 1);
-    setCount((prevCount) => prevCount + 1);
-    setCount((prevCount) => prevCount + 1);
-    setCount((prevCount) => prevCount + 1);
-  };
-
-  const [preson, setPerson] = useState({ name: "", age: "" });
-
-  const [items, setItems] = useState([]);
   const [name, setName] = useState("");
 
-  const addItem = () => {
-    setItems([...items, name]);
+  useEffect(() => {
+    console.log("run");
+  }, [count]);
+
+  const [size, setSize] = useState(window.innerWidth);
+
+  const checkSize = () => {
+    setSize(window.innerWidth);
   };
+
+  useEffect(() => {
+    window.addEventListener("resize", checkSize);
+
+    return () => {
+      window.removeEventListener("resize", checkSize);
+    };
+  }, []);
+
+  const [posts, setPosts] = useState(null);
+  const [errMessage, setErrMessage] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    // fetch("https://jsonplaceholder.typicode.com/posts")
+    //   .then((ros) => {
+    //     if (!ros.ok) throw new Error("page " + ros.status + "! not found");
+
+    //     return ros.json();
+    //   })
+    //   .then((data) => setPosts(data))
+    //   .catch((err) => setErrMessage(err.message))
+    //   .finally(() => setLoading(false));
+
+    const fetchPosts = async () => {
+      try {
+        const ros = await fetch(
+          "https://jsonplaceholder.typicode.com/posts/wadwd",
+        );
+
+        if (!ros.ok) throw new Error("page " + ros.status + "! not found");
+
+        const data = await ros.json();
+        setPosts(data);
+      } catch (err) {
+        setErrMessage(err.message);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchPosts();
+  }, []);
 
   return (
     <>
@@ -32,7 +70,7 @@ const App = () => {
         -
       </button>
       <button
-        onClick={handleClick}
+        onClick={() => setCount(count + 1)}
         type="button"
         className="btn btn-success ms-2"
       >
@@ -44,43 +82,6 @@ const App = () => {
 
       <p>Count {count}</p>
 
-      <br />
-      <br />
-
-      <div className="mb-3 w-25">
-        <label htmlFor="exampleFormControlInput1" className="form-label">
-          Name
-        </label>
-        <input
-          type="text"
-          className="form-control"
-          id="exampleFormControlInput1"
-          onChange={(e) => {
-            setPerson({ ...preson, name: e.target.value });
-          }}
-        />
-
-        <br />
-        <p>{preson.name}</p>
-      </div>
-
-      <div className="mb-5 w-25">
-        <label htmlFor="exampleFormControlInput1" className="form-label">
-          Age
-        </label>
-        <input
-          type="text"
-          className="form-control"
-          id="exampleFormControlInput1"
-          onChange={(e) => {
-            setPerson({ ...items, age: e.target.value });
-          }}
-        />
-
-        <br />
-        <p>{preson.age}</p>
-      </div>
-
       <div className="mb-3 w-25">
         <input
           type="text"
@@ -90,20 +91,21 @@ const App = () => {
             setName(e.target.value);
           }}
         />
-
-        <button onClick={addItem} type="button" className="btn btn-success">
-          Add item
-        </button>
-
-        <br />
-        <br />
-
-        <ul>
-          {items.map((item, index) => (
-            <li key={index}>{item}</li>
-          ))}
-        </ul>
+        <p>{name}</p>
       </div>
+
+      <h2>window: {size}</h2>
+      <br />
+      <br />
+
+      {loading && (
+        <div className="spinner-border text-success" role="status">
+          <span className="visually-hidden">Loading...</span>
+        </div>
+      )}
+
+      {errMessage && <h2>{errMessage}</h2>}
+      {posts && posts.map((post) => <h2 key={post.id}>{post.title}</h2>)}
     </>
   );
 };

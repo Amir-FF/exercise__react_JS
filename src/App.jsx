@@ -1,15 +1,13 @@
-import CompA from "./components/comp/CompA";
-import UserProvider from "./context/UserProvider";
 import "./scss/styles.scss";
+import UserProvider from "./context/UserProvider";
+import CompA from "./components/comp/CompA";
 
 const App = () => {
   // codes
 
-  const preson = { name: "ali", age: "20" };
-
   return (
     <>
-      <UserProvider value={preson}>
+      <UserProvider>
         <CompA />
       </UserProvider>
     </>

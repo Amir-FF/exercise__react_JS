@@ -1,23 +1,17 @@
-import { Suspense } from "react";
-import PostList from "./components/posts/ListPosts";
-// import { lazy } from "react";
+import CompA from "./components/comp/CompA";
+import UserProvider from "./context/UserProvider";
 import "./scss/styles.scss";
-import Loading from "./components/loading/Loading";
-import ErrorBoundary from "./components/errorBoundary/ErrorBoundary";
-
-// const Form = lazy(() => import("./components/form/Form.jsx"));
 
 const App = () => {
   // codes
 
+  const preson = { name: "ali", age: "20" };
+
   return (
     <>
-      <ErrorBoundary>
-        <Suspense fallback={<Loading />}>
-          <PostList />
-        </Suspense>
-      </ErrorBoundary>
-      {/* <Form /> */}
+      <UserProvider value={preson}>
+        <CompA />
+      </UserProvider>
     </>
   );
 };

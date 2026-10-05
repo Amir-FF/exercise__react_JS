@@ -1,15 +1,19 @@
+import { useEffect, useRef } from "react";
 import "./scss/styles.scss";
-import UserProvider from "./context/UserProvider";
-import CompA from "./components/comp/CompA";
 
 const App = () => {
   // codes
 
+  const inputRef = useRef(null);
+
+  useEffect(() => {
+    console.log(inputRef.current);
+  });
+
   return (
     <>
-      <UserProvider>
-        <CompA />
-      </UserProvider>
+      <h2>name</h2>
+      <input ref={inputRef} type="text" />
     </>
   );
 };

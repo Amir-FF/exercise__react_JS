@@ -1,15 +1,34 @@
-import "./header.scss";
+import { NavLink } from "react-router";
+// import { Link } from "react-router";
 
-const Header = (props) => {
-  props.sayName("ali", event);
-
+const Header = () => {
   return (
-    <header>
-      <h2>hello</h2>
-      <p>name = {props.user.name}</p>
-      <p>age = {props.user.age}</p>
-      <p>{props.children}</p>
-    </header>
+    <>
+      <h2>Header</h2>
+      {/* <p>
+        <Link to="/">Home</Link>
+      </p>
+      <p>
+        <Link to="/users">Users</Link>
+      </p> */}
+
+      <p>
+        <NavLink
+          to="/"
+          className={({ isActive }) => (isActive ? "nav-link-active" : "")}
+        >
+          Home
+        </NavLink>
+      </p>
+      <p>
+        <NavLink
+          to="/users"
+          className={({ isActive }) => (isActive ? "nav-link-active" : "")}
+        >
+          Users
+        </NavLink>
+      </p>
+    </>
   );
 };
 
